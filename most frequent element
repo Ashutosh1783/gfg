@@ -1,0 +1,34 @@
+class Solution {
+  public:
+    int mostFreqEle(vector<int>& arr) {
+        // code here
+        unordered_map<int,int>freq;
+         // Har element ki frequency count karo
+         for(int i=0;i<arr.size();i++)
+         {
+             freq[arr[i]]++;
+         }
+         
+         int maxi=0;
+         int ans=arr[0];
+         
+         for(int i=0;i<arr.size();i++)
+         {
+             // Agar current element ki frequency
+             // ab tak ki maximum frequency se zyada hai
+
+             if(freq[arr[i]]>maxi)
+             {
+                 maxi=freq[arr[i]];
+                 ans=arr[i];
+             }
+             // Agar frequency same hai,
+             // to bada element choose karo
+             else if(freq[arr[i]]==maxi && arr[i]>ans)
+             {
+                 ans=arr[i];
+             }
+         }
+         return ans;
+    }
+};
